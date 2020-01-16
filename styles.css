@@ -1,0 +1,101 @@
+:root {
+  --smokey: #f5f5f5;
+  --darky: #262625;
+  --thickness: 0.1vmin;
+  --half: 50%;
+  --border: var(--thickness) solid var(--smokey);
+  --border-radius: var(--half);
+}
+
+body,
+html {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: var(--darky);
+  color: var(--smokey);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.frame {
+  position: relative;
+  width: 1000px;
+  height: 420px;
+  outline: 1px solid var(--smokey);
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  width: 90vmin;
+  flex-wrap: wrap;
+}
+
+.controls .item {
+  line-height: 2rem;
+  margin-right: 1rem;
+}
+
+#container {
+  position: absolute;
+  display: flex;
+  border: var(--border);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+
+#container .cover {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--darky);
+  border-radius: var(--border-radius);
+  z-index: 1;
+}
+
+#container .cover::before {
+  width: var(--half);
+  height: var(--half);
+  border-radius: var(--border-radius);
+  content: "";
+  border: var(--border);
+}
+
+#container .cover .label {
+  --top: calc(100% / 12);
+  position: absolute;
+  top: var(--top);
+  left: 50%;
+  transform: translateY(calc(var(--top) * -1)) translateX(-50%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#container .tooth {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+#container .tooth::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: var(--border);
+  content: "";
+  background: var(--darky);
+}
+
+#container .tooth.circle::before {
+  border-radius: var(--border-radius);
+}
+
+#container .tooth.triangle::before {
+  transform: rotateZ(45deg);
+}
